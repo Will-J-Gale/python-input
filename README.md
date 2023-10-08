@@ -27,8 +27,8 @@ while(not inp.get_key("q")):
 ```
 
 ## Keys
-Keys are the simple string represtnation of the keys.  
-To list all avaiable keyboard key strings use `print_available_keys`
+Keys are the simple string representation of the keys.  
+To list all available keyboard key strings use `print_available_keys`
 
 ```python
 from python_input import Input, MouseButton
