@@ -38,3 +38,11 @@ inp.print_available_keys()
 
 ```
 
+## Installing from source
+```bash
+poetry init
+poetry build
+pip install dist/python_input-<VERSION>.tar.gz
+```
+
+
