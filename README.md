@@ -27,7 +27,7 @@ while(not inp.get_key("q")):
 ```
 
 ## Keys
-Keys are simple the string represtnation of the keys.  
+Keys are the simple string represtnation of the keys.  
 To list all avaiable keyboard key strings use `print_available_keys`
 
 ```python
