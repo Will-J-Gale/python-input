@@ -62,6 +62,9 @@ class _KeyboardInput:
     def any_key_pressed(self) -> bool:
         return self._key_pressed
     
+    def get_all_pressed_keys(self):
+        return [key for key, pressed in self._keys_pressed.items() if pressed]
+    
     def _close(self):
         self._keyboard_listener.stop()
     
@@ -133,6 +136,8 @@ class Input:
         self.get_key = self._keyboard_input.get_key
         self.get_key_down = self._keyboard_input.get_key_down
         self.get_key_up = self._keyboard_input.get_key_up
+        self.any_key_pressed = self._keyboard_input.any_key_pressed
+        self.get_all_pressed_keys = self._keyboard_input.get_all_pressed_keys
 
         self.get_mouse = self._mouse_input.get_mouse
         self.get_mouse_down = self._mouse_input.get_mouse_down

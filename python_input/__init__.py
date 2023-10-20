@@ -1,1 +1,1 @@
-from ._input import Input
+from ._input import Input, MouseButton
