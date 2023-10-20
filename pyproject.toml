@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python-input"
-version = "0.1.3"
+version = "0.1.4"
 description = ""
 authors = ["Will Gale <willjgale@outlook.com>"]
 readme = "README.md"
