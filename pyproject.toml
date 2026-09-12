@@ -1,16 +1,9 @@
-[tool.poetry]
+[project]
 name = "python-input"
-version = "0.1.5"
-description = ""
-authors = ["Will Gale <willjgale@outlook.com>"]
+version = "0.1.6"
+description = "Simple synchronous keyboard + mouse input"
 readme = "README.md"
-homepage = "https://github.com/Will-J-Gale/python-input"
-
-[tool.poetry.dependencies]
-python = "^3.8"
-pynput = "^1.7.6"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.8"
+dependencies = [
+    "pynput>=1.7.6",
+]
