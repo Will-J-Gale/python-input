@@ -1,6 +1,6 @@
 [project]
 name = "python-input"
-version = "0.1.6"
+version = "0.1.7"
 description = "Simple synchronous keyboard + mouse input"
 readme = "README.md"
 requires-python = ">=3.8"
