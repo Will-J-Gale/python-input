@@ -5,8 +5,10 @@ from python_input import Input, MouseButton
 inp = Input()
 
 while(not inp.get_key("q")):
-    #Keyboard
+    pos = inp.get_mouse_pos()
     vel = inp.get_mouse_vel()
-    print(inp.get_mouse_scroll())
+    scroll = inp.get_mouse_scroll()
+
+    print(f"{pos=:} {vel=:} {scroll=:}")
 
     time.sleep(0.05)
