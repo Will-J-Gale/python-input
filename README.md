@@ -1,7 +1,7 @@
 # Python-Input
 Simple mouse and keyboard input for python.
 
-## Usage
+## Usage - Buttons
 
 ```python
 from python_input import Input, MouseButton
@@ -26,6 +26,20 @@ while(not inp.get_key("q")):
         print("Right up")
 ```
 
+## Usage - Mouse movement
+```python
+from python_input import Input, MouseButton
+
+inp = Input()
+
+while(not inp.get_key("q")):   
+    pos = inp.get_mouse_pos()
+    vel = inp.get_mouse_vel()
+    scroll = inp.get_mouse_scroll()
+
+    print(f"{pos=:} {vel=:} {scroll=:}")
+```
+
 ## Keys
 Keys are the simple string representation of the keys.  
 To list all available keyboard key strings use `print_available_keys`
@@ -40,9 +54,9 @@ inp.print_available_keys()
 
 ## Installing from source
 ```bash
-poetry init
-poetry build
-pip install dist/python_input-<VERSION>.tar.gz
+uv init
+uv build
+uv pip install dist/python_input-<VERSION>.tar.gz
 ```
 
 
