@@ -1,3 +1,5 @@
+import time
+
 from python_input import Input, MouseButton
 
 inp = Input()
@@ -18,3 +20,5 @@ while(not inp.get_key("q")):
         print("Middle down")
     elif(inp.get_mouse_up(MouseButton.right)):
         print("Right up")
+
+    time.sleep(0.05)
