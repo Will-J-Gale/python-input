@@ -111,7 +111,7 @@ class _MouseInput:
     def _close(self):
         self._mouse_listener.stop()
 
-    def get_mouse_position(self) -> (int, int):
+    def get_mouse_position(self) -> tuple[int, int]:
         return self._mouse_position
     
     def get_mouse(self, button:MouseButton) ->bool:
