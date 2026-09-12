@@ -76,7 +76,10 @@ class _MouseInput:
             on_scroll=self._on_mouse_scroll
         )
         self._mouse_pressed = False
-        self._mouse_position = (0,0)
+        self._mouse_pos = [-1, -1]
+        self._prev_mouse_pos = None
+        self._mouse_vel = [0, 0]
+        self._scroll = 0
 
         mouse_states = {
             MouseButton.left: False,
@@ -92,8 +95,8 @@ class _MouseInput:
         atexit.register(self._close)
 
     
-    def _on_mouse_move(self, x:int, y:int):
-        self.mousePositon = (x, y)
+    def _on_mouse_move(self, x:int, y:int) -> tuple[int, int]:
+        self._mouse_pos = [x, y]
 
     def _on_mouse_click(self, x:int, y:int, button:MouseButton, state:bool):
         self._mouse_pressed = state
@@ -105,8 +108,8 @@ class _MouseInput:
             self._mouse_buttons_pressed[button] = False
             self._mouse_buttons_up[button] = True
 
-    def _on_mouse_scroll(self, *args):
-        pass
+    def _on_mouse_scroll(self, x:int, y:int, x_scroll:int, y_scroll:int, _:bool):
+        self._scroll = y_scroll
 
     def _close(self):
         self._mouse_listener.stop()
@@ -127,6 +130,22 @@ class _MouseInput:
         self._mouse_buttons_up[button] = False
         return state
 
+    def get_mouse_pos(self) -> tuple[int, int]:
+        return self._mouse_pos
+
+    def get_mouse_vel(self) -> tuple[int, int]:
+        if(self._prev_mouse_pos is not None and self._prev_mouse_pos[0] > -1 and self._prev_mouse_pos[1] > -1):
+            self._mouse_vel[0] = self._mouse_pos[0] - self._prev_mouse_pos[0]
+            self._mouse_vel[1] = self._mouse_pos[1] - self._prev_mouse_pos[1]
+
+        self._prev_mouse_pos = self._mouse_pos.copy()
+        return self._mouse_vel
+
+    def get_mouse_scroll(self):
+        scroll = self._scroll
+        self._scroll = 0
+        return scroll
+        
 class Input:
     def __init__(self):
         self._keyboard_input = _KeyboardInput() 
@@ -142,3 +161,6 @@ class Input:
         self.get_mouse = self._mouse_input.get_mouse
         self.get_mouse_down = self._mouse_input.get_mouse_down
         self.get_mouse_up = self._mouse_input.get_mouse_up
+        self.get_mouse_pos = self._mouse_input.get_mouse_pos
+        self.get_mouse_vel = self._mouse_input.get_mouse_vel
+        self.get_mouse_scroll = self._mouse_input.get_mouse_scroll
